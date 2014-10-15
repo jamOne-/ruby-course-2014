@@ -60,10 +60,7 @@ class ArticleManager
 
   def to_s
     raise_if_empty
-    output = "Listing articles:"
-    @articles.each { |art| output += "\n\t-#{art.title}, #{art.author} (#{art.created_at}) #{art.likes}/#{art.votes}\n\t\t#{art.shortened_to(40)}" }
-
-    output
+    @articles.inject("Listing articles:") { |output, art| output + "\n\t-#{art.title}, #{art.author} (#{art.created_at}) #{art.likes}/#{art.votes}\n\t\t#{art.shortened_to(40)}" }
   end
 
   def raise_if_empty
