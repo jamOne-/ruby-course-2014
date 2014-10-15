@@ -1,4 +1,6 @@
 class Article
+  attr_reader :title, :content, :author, :likes, :dislikes, :created_at
+
   def initialize(title, content, author = "")
     @title, @content, @author = title, content, author
     @likes = @dislikes = 0
@@ -25,8 +27,8 @@ class Article
     limit > @content.length ? @content : @content[0...limit - 3] + "..."
   end
 
-  def include?(what)
-    @content.include? what
+  def include?(pattern)
+    @content.include?(pattern)
   end
 
   def words
