@@ -9,10 +9,6 @@ class ArticleManager
     @articles.push(new_art)
   end
 
-  def delete_article(art)
-    @articles.delete(art)
-  end
-
   def worst_articles
     @articles.sort { |art1, art2| art1.positive_votes <=> art2.positive_votes }
   end
@@ -34,11 +30,11 @@ class ArticleManager
   end
 
   def include?(pattern)
-    @articles.keep_if { |art| art.include?(pattern) }
+    @articles.select { |art| art.include?(pattern) }
   end
 
   def authors
-    @articles.collect { |art| art.author }.uniq!
+    @articles.collect { |art| art.author }.uniq
   end
 
   def number_of_authors
