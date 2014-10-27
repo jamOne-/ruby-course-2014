@@ -3,7 +3,7 @@ require "test/unit"
 
 class ArticleSpec < Test::Unit::TestCase
   def setup
-    @art = Article.new("Test_title", "Test_contentasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf asdf asdf foo", "Test_author")
+    @art = Article.new("Test_title", "Test content is just a nothing read-worthy and Ala ma kota is fine there. just Test", "Test_author")
 
     5.times { @art.like! }
     2.times { @art.dislike! }
@@ -26,15 +26,15 @@ class ArticleSpec < Test::Unit::TestCase
   end
 
   def test_shortened_to
-    assert_equal("Test_contentasdfa...", @art.shortened_to(20))
-    assert_equal("Test_contentasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf asdf asdf foo", @art.shortened_to(100))
+    assert_equal("Test content is...", @art.shortened_to(18))
+    assert_equal("Test content is just a nothing read-worthy and Ala ma kota is fine there. just Test", @art.shortened_to(100))
   end
 
   def test_words
-    assert_equal(["Test_contentasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf", "asdf", "asdf", "foo"], @art.words)
+    assert_equal(["Test", "content", "is", "just", "a", "nothing", "read-worthy", "and", "Ala", "ma", "kota", "is", "fine", "there.", "just", "Test"], @art.words)
   end
 
   def test_distinct_words
-    assert_equal(["Test_contentasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf", "asdf", "foo"], @art.distinct_words)
+    assert_equal(["Test", "content", "is", "just", "a", "nothing", "read-worthy", "and", "Ala", "ma", "kota", "fine", "there."], @art.distinct_words)
   end
 end
