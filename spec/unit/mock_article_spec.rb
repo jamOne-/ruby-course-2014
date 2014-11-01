@@ -32,5 +32,9 @@ class MockArticleSpec < Test::Unit::TestCase
 
   def test_generate_content
     content = @mock.generate_content
+    dots = content.count(".")
+    bigs = content.scan(/[A-Z]/).size
+    assert(dots >= 1 && dots <= 5)
+    assert_equal(dots, bigs)
   end
 end
