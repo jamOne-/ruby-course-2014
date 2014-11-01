@@ -10,7 +10,7 @@ class ArticleFilesystem
   end
 
   def self.load_article(article_path)
-    article_file = File.open(ARTICLES_FOLDER + article_path, "r")
+    article_file = File.open(article_path, "r")
     article_information = article_file.first.split("|")
     loaded_article = Article.new(article_information[1], article_information[2], article_information[0])
     article_information[3].to_i.times { loaded_article.like! }

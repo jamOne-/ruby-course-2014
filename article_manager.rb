@@ -1,4 +1,5 @@
 require_relative 'article.rb'
+require_relative 'article_filesystem.rb'
 
 class ArticleManager
   def initialize
@@ -47,5 +48,9 @@ class ArticleManager
 
   def to_s
     @articles.inject("Listing articles:") { |output, art| output + "\n\t-#{art.title}, #{art.author} (#{art.created_at}) #{art.likes}/#{art.votes}\n\t\t#{art.shortened_to(40)}" }
+  end
+
+  def load_articles(directory)
+    Dir[directory + '/*'].each { |file| add_article(ArticleFilesystem.load_article(file)) }
   end
 end
