@@ -1,3 +1,5 @@
+require 'stamp'
+
 class Article
   attr_reader :title, :content, :author, :likes, :dislikes, :created_at
 
@@ -37,5 +39,9 @@ class Article
 
   def distinct_words
     words.uniq
+  end
+
+  def created_stamp
+    @created_at.stamp("Sunday, May 1, 2000")
   end
 end

@@ -37,4 +37,8 @@ class ArticleSpec < Test::Unit::TestCase
   def test_distinct_words
     assert_equal(["Test", "content", "is", "just", "a", "nothing", "read-worthy", "and", "Ala", "ma", "kota", "fine", "there."], @art.distinct_words)
   end
+
+  def test_created_stamp
+    assert_equal(Time.now.stamp("Sunday, May 1, 2000"), @art.created_stamp)
+  end
 end
