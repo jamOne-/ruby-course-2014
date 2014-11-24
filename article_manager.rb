@@ -53,4 +53,8 @@ class ArticleManager
   def load_articles(directory)
     Dir[directory + '/*'].each { |file| add_article(ArticleFilesystem.load_article(file)) }
   end
+
+  def save_articles
+    @articles.each { |art| ArticleFilesystem.save_article(art) }
+  end
 end

@@ -4,7 +4,7 @@ class ArticleFilesystem
   ARTICLES_FOLDER = "./articles/"
 
   def self.save_article(article)
-    article_file = File.new(ARTICLES_FOLDER + article.title.downcase.split.join("_"), "w")
+    article_file = File.new(ARTICLES_FOLDER + article.title.downcase.split.join("_").gsub(/\W/, ""), "w")
     article_file.write("#{article.author}|#{article.title}|#{article.content}|#{article.likes}|#{article.dislikes}")
     article_file.close
   end
